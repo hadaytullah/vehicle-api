@@ -2,6 +2,6 @@ package springboot;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-interface SensorDataRepository extends JpaRepository<SensorData, Long> {
+interface SensorDataRepository extends JpaRepository<SensorData, Integer> {
 
 }

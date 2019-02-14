@@ -21,6 +21,8 @@ plugins {
     id 'org.springframework.boot' version '2.1.2.RELEASE'
 
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+
+		id "com.palantir.docker" version "0.21.0"
 }
 
 repositories {
@@ -30,7 +32,11 @@ repositories {
 
     mavenCentral()
 }
-
+//buildscript {
+//    dependencies {
+//        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+//    }
+//}
 dependencies {
     //compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     //compile 'org.springframework.boot:spring-boot-starter-data-rest'
@@ -43,6 +49,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 		implementation 'org.postgresql:postgresql:42.2.5'
 
+
 		// https://projectlombok.org
     compileOnly 'org.projectlombok:lombok:1.18.4'
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
@@ -53,6 +60,18 @@ dependencies {
     // Use the awesome Spock testing and specification framework even with Java
     testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
     testImplementation 'junit:junit:4.12'
+}
+
+//task unpack(type: Copy) {
+//    dependsOn bootJar
+//    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+//    into("build/dependency")
+//}
+docker { //not working
+    //name "${project.group}/${bootJar.baseName}"
+		name "springboot"
+    //copySpec.from().into("dependency")
+    //buildArgs(['DEPENDENCY': "dependency"])
 }
 
 // Define the main class for the application

@@ -5,3 +5,5 @@
 /node_modules/
 .gradle
 build
+src/main/resources/application.properties
+bin/
